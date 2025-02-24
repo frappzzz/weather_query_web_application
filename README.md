@@ -51,19 +51,15 @@ CREATE TABLE IF NOT EXISTS weather_queries (id SERIAL PRIMARY KEY,
  sunset TIME)
 ```
 ### 5. Configure the Application
-Create a config.py file in the root directory with the following content:
+Create a .env file in the root directory with the following content:
 ```commandline
-DB_NAME = "weather_db"
-DB_USER = "postgres"
-DB_PASSWORD = "your_password"
-DB_HOST = "localhost"
-DB_PORT = 5432
-
-APP_STATIC_FOLDER = "www/files"
-APP_TEMPLATE_FOLDER = "www"
-WEATHER_API_KEY = "your_openweathermap_api_key"
-WEATHER_API_URL = "http://api.openweathermap.org/data/2.5/weather"
-WEATHER_API_UNITS = "metric"
+DB_NAME="weather_db"
+DB_USER="your_user"
+DB_PASSWORD="your_password"
+DB_HOST=localhost
+DB_PORT=5432
+WEATHER_API_KEY="your_key"
+APP_HOST_PORT=5000
 ```
 ### 6. Run the Application
 Start the Flask application:

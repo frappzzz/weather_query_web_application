@@ -25,7 +25,7 @@ def history():
     return render_template('history.html',history=history)
 
 def get_weather_data(city_name):
-    url=f"{os.getenv('WEATHER_API_URL')}?q={city_name}&appid={os.getenv('WEATHER_API_KEY')}&units={os.getenv('WEATHER_API_UNITS')}"
+    url=f"http://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={os.getenv('WEATHER_API_KEY')}&units=metric"
     response = requests.get(url)
     if response.status_code == 200:
         return response.json()
