@@ -38,17 +38,20 @@ CREATE DATABASE weather_db;
 ```
 2. Create the weather_queries Table. Run the following SQL command to create the weather_queries table:
 ```commandline
-CREATE TABLE IF NOT EXISTS weather_queries (id SERIAL PRIMARY KEY,
- city_name TEXT, 
- query_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
- weather_main TEXT, 
- weather_description TEXT, 
- temperature REAL, 
- temperature_feels_like REAL, 
- wind_speed REAL, 
- wind_deg TEXT, 
- sunrise TIME, 
- sunset TIME)
+CREATE TABLE IF NOT EXISTS weather_queries (
+            id SERIAL PRIMARY KEY,
+            city_name TEXT,
+            query_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            weather_main TEXT,
+            weather_description TEXT,
+            temperature REAL,
+            temperature_feels_like REAL,
+            wind_speed REAL,
+            wind_deg TEXT,
+            sunrise TIME,
+            sunset TIME,
+            data_calculation TIME
+        );
 ```
 ### 5. Configure the Application
 Create a .env file in the root directory with the following content:
