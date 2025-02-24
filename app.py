@@ -16,17 +16,18 @@ def index():
             save_weather_query(weather_data["name"],weather_data["weather"][0]['main'], weather_data["weather"][0]['description'], weather_data["main"]['temp'],weather_data["main"]['feels_like'], weather_data["wind"]["speed"],wind_direction(weather_data["wind"]["deg"]),timestamp_to_hms_format(weather_data["sys"]["sunrise"]),timestamp_to_hms_format(weather_data["sys"]["sunset"]))
         return redirect(url_for('index'))
     return render_template('index.html')
+
 @app.route('/history')
 def history():
     history=get_weather_history()
     return render_template('history.html',history=history)
 
-
 def get_weather_data(city_name):
-    url=f"{config.WEATHER_API_URL}?q={city_name}&appid={config.WEATHER_API_KEY}&units=metric"
+    url=f"{config.WEATHER_API_URL}?q={city_name}&appid={config.WEATHER_API_KEY}&units={config.WEATHER_API_UNITS}"
     response = requests.get(url)
     if response.status_code == 200:
         return response.json()
     return None
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=5000,debug=True)
