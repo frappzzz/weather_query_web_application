@@ -1,6 +1,5 @@
 import psycopg2
 from psycopg2 import sql
-from datetime import datetime
 import config
 
 def get_DB_connection():
