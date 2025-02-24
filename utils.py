@@ -1,7 +1,9 @@
 from datetime import datetime
-
-def timestamp_to_hms_format(timestamp):
-    return datetime.fromtimestamp(timestamp).strftime('%H:%M:%S')
+from zoneinfo import ZoneInfo
+def timestamp_to_hms_format(timestamp, timezone_offset):
+    tz = ZoneInfo(f"Etc/GMT{'+' if timezone_offset <= 0 else '-'}{abs(timezone_offset) // 3600}")
+    dt = datetime.fromtimestamp(timestamp, tz)
+    return dt.strftime('%H:%M:%S')
 def wind_direction(degrees):
     directions = [
         "North", "Northeast", "East", "Southeast",
