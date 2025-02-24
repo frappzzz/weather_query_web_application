@@ -4,9 +4,8 @@ This is a simple Flask-based web application that allows users to query weather 
 **Prerequisites**
 
 Before you begin, ensure you have the following installed:
-
-    Python 3.x
-
-    PostgreSQL
-
-    pip (Python package manager)
+```commandline
+Python 3.x
+PostgreSQL
+pip (Python package manager)
+```
