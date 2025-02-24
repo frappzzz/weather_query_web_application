@@ -1,13 +1,14 @@
 import psycopg2
 from psycopg2 import sql
-import config
-
+import os
+from dotenv import load_dotenv
+load_dotenv()
 def get_DB_connection():
-    conn = psycopg2.connect(dbname=config.DB_NAME,
-                            user=config.DB_USER,
-                            password=config.DB_PASSWORD,
-                            host=config.DB_HOST,
-                            port=config.DB_PORT)
+    conn = psycopg2.connect(dbname=os.getenv('DB_NAME'),
+                            user=os.getenv('DB_USER'),
+                            password=os.getenv('DB_PASSWORD'),
+                            host=os.getenv('DB_HOST'),
+                            port=os.getenv('DB_PORT'))
     return conn
 def save_weather_query(city_name, weather_main, weather_description,temperature, temperature_feels_like,wind_speed, wind_deg, sunrise,sunset):
     conn = get_DB_connection()

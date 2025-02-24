@@ -2,8 +2,10 @@ from flask import Flask, render_template, request, redirect, url_for
 import requests
 from DataBase import save_weather_query,get_weather_history
 from utils import timestamp_to_hms_format, wind_direction
-import config
-app = Flask(__name__, static_folder=config.APP_STATIC_FOLDER, template_folder=config.APP_TEMPLATE_FOLDER)
+import os
+from dotenv import load_dotenv
+load_dotenv()
+app = Flask(__name__, static_folder=os.getenv('APP_STATIC_FOLDER'), template_folder=os.getenv('APP_TEMPLATE_FOLDER'))
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -23,7 +25,7 @@ def history():
     return render_template('history.html',history=history)
 
 def get_weather_data(city_name):
-    url=f"{config.WEATHER_API_URL}?q={city_name}&appid={config.WEATHER_API_KEY}&units={config.WEATHER_API_UNITS}"
+    url=f"{os.getenv('WEATHER_API_URL')}?q={city_name}&appid={os.getenv('WEATHER_API_KEY')}&units={os.getenv('WEATHER_API_UNITS')}"
     response = requests.get(url)
     if response.status_code == 200:
         return response.json()
