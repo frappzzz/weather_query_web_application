@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for
 import requests
-from DataBase import save_weather_query,get_weather_history
+from DataBase import save_weather_query,get_weather_history,create_table
 from utils import timestamp_to_hms_format, wind_direction
 import os
 from dotenv import load_dotenv
 load_dotenv()
-app = Flask(__name__, static_folder=os.getenv('APP_STATIC_FOLDER'), template_folder=os.getenv('APP_TEMPLATE_FOLDER'))
-
+app = Flask(__name__, static_folder="www/files", template_folder="www")
+create_table()
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method=="POST":
@@ -32,4 +32,4 @@ def get_weather_data(city_name):
     return None
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0",port=5000,debug=True)
+    app.run(host="0.0.0.0",port=os.getenv('APP_HOST_PORT'),debug=True)

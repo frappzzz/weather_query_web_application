@@ -10,6 +10,28 @@ def get_DB_connection():
                             host=os.getenv('DB_HOST'),
                             port=os.getenv('DB_PORT'))
     return conn
+def create_table():
+    conn = get_DB_connection()
+    cur = conn.cursor()
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS weather_queries (
+            id SERIAL PRIMARY KEY,
+            city_name TEXT,
+            query_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            weather_main TEXT,
+            weather_description TEXT,
+            temperature REAL,
+            temperature_feels_like REAL,
+            wind_speed REAL,
+            wind_deg TEXT,
+            sunrise TIME,
+            sunset TIME
+        );
+    """)
+    conn.commit()
+    cur.close()
+    conn.close()
+
 def save_weather_query(city_name, weather_main, weather_description,temperature, temperature_feels_like,wind_speed, wind_deg, sunrise,sunset):
     conn = get_DB_connection()
     cur = conn.cursor()
