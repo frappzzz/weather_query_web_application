@@ -15,6 +15,7 @@
 {% if isWeather==True %}
  <div class="weather-info">
         <img src="https://openweathermap.org/img/wn/{{icon}}@2x.png">
+        <p>Local time of data calculation: {{local_time}}</p>
         <p>City: {{weather[0]}}</p>
         <p>Main weather: {{weather[1]}}</p>
         <p>Weather Description: {{weather[2]}}</p>
