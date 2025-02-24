@@ -25,21 +25,22 @@ def create_table():
             wind_speed REAL,
             wind_deg TEXT,
             sunrise TIME,
-            sunset TIME
+            sunset TIME,
+            data_calculation TIME
         );
     """)
     conn.commit()
     cur.close()
     conn.close()
 
-def save_weather_query(city_name, weather_main, weather_description,temperature, temperature_feels_like,wind_speed, wind_deg, sunrise,sunset):
+def save_weather_query(city_name, weather_main, weather_description,temperature, temperature_feels_like,wind_speed, wind_deg, sunrise,sunset,data_calculation):
     conn = get_DB_connection()
     cur = conn.cursor()
     cur.execute(
         sql.SQL("INSERT INTO weather_queries "
-                "(city_name, weather_main, weather_description,temperature, temperature_feels_like, wind_speed, wind_deg, sunrise,sunset) "
-                "VALUES (%s, %s, %s,%s, %s, %s,%s, %s, %s)"),
-        (city_name, weather_main, weather_description,temperature, temperature_feels_like, wind_speed, wind_deg, sunrise,sunset)
+                "(city_name, weather_main, weather_description,temperature, temperature_feels_like, wind_speed, wind_deg, sunrise,sunset,data_calculation) "
+                "VALUES (%s, %s, %s,%s, %s, %s,%s, %s, %s,%s)"),
+        (city_name, weather_main, weather_description,temperature, temperature_feels_like, wind_speed, wind_deg, sunrise,sunset,data_calculation)
     )
     conn.commit()
     cur.close()
@@ -49,7 +50,7 @@ def get_weather_history():
     conn = get_DB_connection()
     cur = conn.cursor()
     cur.execute("SELECT "
-                "query_timestamp, city_name, weather_main, weather_description,temperature, temperature_feels_like, wind_speed, wind_deg, sunrise,sunset "
+                "query_timestamp, city_name, weather_main, weather_description,temperature, temperature_feels_like, wind_speed, wind_deg, sunrise,sunset,data_calculation "
                 "FROM weather_queries "
                 "ORDER BY query_timestamp DESC")
     history = cur.fetchall()
