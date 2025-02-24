@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Query History</title>
+</head>
+<body>
+<h1>Query History</h1>
+<table border="1">
+  <tr>
+    <th>
+      City
+    </th>
+    <th>
+      Main weather
+    </th>
+    <th>
+      Weather Description
+    </th>
+    <th>
+      Temperature (°C)
+    </th>
+    <th>
+      The temperature feels like (°C)
+    </th>
+    <th>
+      Wind speed (m/s)
+    </th>
+    <th>
+      Wind direction
+    </th>
+    <th>
+      Sunrise
+    </th>
+    <th>
+      Sunset
+    </th>
+    <th>
+      Query Timestamp
+    </th>
+
+  </tr>
+  {% for entry in history %}
+  <tr>
+      <td>
+        {{ entry[1] }}
+      </td>
+      <td>
+        {{ entry[2] }}
+      </td>
+      <td>
+        {{ entry[3] }}
+      </td>
+      <td>
+        {{ entry[4] }}
+      </td>
+      <td>
+        {{ entry[5] }}
+      </td>
+      <td>
+        {{ entry[6] }}
+      </td>
+      <td>
+        {{ entry[7] }}
+      </td>
+      <td>
+        {{ entry[8] }}
+      </td>
+      <td>
+        {{ entry[9] }}
+      </td>
+      <td>
+        {{ entry[0] }}
+      </td>
+  </tr>
+  {% endfor %}
+</table>
+</body>
+</html>
