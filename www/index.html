@@ -9,7 +9,19 @@
 <form method="POST">
   <input type="text" name="city" placeholder="Enter city name" required>
   <button type="submit">Get Weather</button>
-</form>
 
+</form>
+{% if isWeather==True %}
+    <img src="https://openweathermap.org/img/wn/{{icon}}@2x.png">
+<br>City: {{weather[0]}}<br>
+Main weather: {{weather[1]}}<br>
+Weather Description: {{weather[2]}}<br>
+Temperature (°C): {{weather[3]}}<br>
+The temperature feels like (°C): {{weather[4]}}<br>
+Wind speed (m/s): {{weather[5]}}<br>
+Wind direction: {{weather[6]}}<br>
+Sunrise (GMT+3): {{weather[7]}}<br>
+Sunset (GMT+3): {{weather[8]}}<br>
+{% endif %}
 </body>
 </html>
