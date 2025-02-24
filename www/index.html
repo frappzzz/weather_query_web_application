@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Weather Query</title>
+    <link rel="stylesheet" href="files/css/style.css">
 </head>
 <body>
 <h1>Weather Query</h1>
@@ -12,16 +13,18 @@
 
 </form>
 {% if isWeather==True %}
-    <img src="https://openweathermap.org/img/wn/{{icon}}@2x.png">
-<br>City: {{weather[0]}}<br>
-Main weather: {{weather[1]}}<br>
-Weather Description: {{weather[2]}}<br>
-Temperature (°C): {{weather[3]}}<br>
-The temperature feels like (°C): {{weather[4]}}<br>
-Wind speed (m/s): {{weather[5]}}<br>
-Wind direction: {{weather[6]}}<br>
-Sunrise (GMT+3): {{weather[7]}}<br>
-Sunset (GMT+3): {{weather[8]}}<br>
+ <div class="weather-info">
+        <img src="https://openweathermap.org/img/wn/{{icon}}@2x.png">
+        <p>City: {{weather[0]}}</p>
+        <p>Main weather: {{weather[1]}}</p>
+        <p>Weather Description: {{weather[2]}}</p>
+        <p>Temperature (°C): {{weather[3]}}</p>
+        <p>The temperature feels like (°C): {{weather[4]}}</p>
+        <p>Wind speed (m/s): {{weather[5]}}</p>
+        <p>Wind direction: {{weather[6]}}</p>
+        <p>Sunrise (GMT+3): {{weather[7]}}</p>
+        <p>Sunset (GMT+3): {{weather[8]}}</p>
+    </div>
 {% endif %}
 </body>
 </html>
