@@ -18,3 +18,14 @@ First, clone the repository to your local machine:
 git clone https://github.com/your-repository/weather-query-app.git
 cd weather-query-app
 ```
+### 2. Set Up a Virtual Environment
+Create and activate a virtual environment:
+```commandline
+python3 -m venv .venv
+source .venv/bin/activate  # On Windows, use `.venv\Scripts\activate`
+```
+### 3. Install Dependencies
+Install the required Python packages:
+```commandline
+pip install -r requirements.txt
+```
