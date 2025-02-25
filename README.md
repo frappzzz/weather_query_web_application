@@ -15,7 +15,7 @@ pip (Python package manager)
 ### 1. Clone the Repository
 First, clone the repository to your local machine:
 ```commandline
-git clone https://github.com/your-repository/weather-query-app.git
+git clone https://github.com/frappzzz/weather_query_web_application.git
 cd weather-query-app
 ```
 ### 2. Set Up a Virtual Environment
