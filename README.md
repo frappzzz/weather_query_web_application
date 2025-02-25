@@ -82,12 +82,12 @@ APP_HOST_PORT=5000
 FLASK_APP=app.py
 FLASK_ENV=development
 ```
-### 4. Start services
+### 4. Start Services
 Start services:
 ```commandline
 docker-compose up --build
 ```
-### 5. Access the app
+### 5. Access the Application
 The application will be running at http://0.0.0.0:5000/.
 - **Home Page**: Open your web browser and navigate to http://localhost:5000/. Enter a city name to query the weather.
 - **History Page**: Navigate to http://localhost:5000/history to view the query history.
