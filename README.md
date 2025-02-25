@@ -36,23 +36,6 @@ psql -U postgres
 CREATE DATABASE weather_db;
 \q
 ```
-2. Create the weather_queries Table. Run the following SQL command to create the weather_queries table:
-```commandline
-CREATE TABLE IF NOT EXISTS weather_queries (
-            id SERIAL PRIMARY KEY,
-            city_name TEXT,
-            query_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            weather_main TEXT,
-            weather_description TEXT,
-            temperature REAL,
-            temperature_feels_like REAL,
-            wind_speed REAL,
-            wind_deg TEXT,
-            sunrise TIME,
-            sunset TIME,
-            data_calculation TIME
-        );
-```
 ### 5. Configure the Application
 Create a .env file in the root directory with the following content:
 ```commandline
@@ -63,6 +46,8 @@ DB_HOST=localhost
 DB_PORT=5432
 WEATHER_API_KEY="your_key"
 APP_HOST_PORT=5000
+FLASK_APP=app.py
+FLASK_ENV=development
 ```
 ### 6. Run the Application
 Start the Flask application:
@@ -72,5 +57,37 @@ python app.py
 The application will be running at http://0.0.0.0:5000/.
 ### 7. Access the Application
 Start the Flask application:
+- **Home Page**: Open your web browser and navigate to http://localhost:5000/. Enter a city name to query the weather.
+- **History Page**: Navigate to http://localhost:5000/history to view the query history.
+## Setup with Docker
+
+### 1. Installation Docker
+Install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/)
+### 2. Clone the Repository
+Clone the repository to your local machine:
+```commandline
+git clone https://github.com/frappzzz/weather_query_web_application.git
+cd weather_query_web_application
+```
+### 3. Configure the Application
+Create a .env file in the root directory with the following content:
+```commandline
+DB_NAME="weather_db"
+DB_USER="your_user"
+DB_PASSWORD="your_password"
+DB_HOST=db
+DB_PORT=5432
+WEATHER_API_KEY="your_key"
+APP_HOST_PORT=5000
+FLASK_APP=app.py
+FLASK_ENV=development
+```
+### 4. Start services
+Start services:
+```commandline
+docker-compose up --build
+```
+### 5. Access the app
+The application will be running at http://0.0.0.0:5000/.
 - **Home Page**: Open your web browser and navigate to http://localhost:5000/. Enter a city name to query the weather.
 - **History Page**: Navigate to http://localhost:5000/history to view the query history.
