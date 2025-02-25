@@ -26,21 +26,22 @@ def create_table():
             wind_direction TEXT,
             sunrise TIME,
             sunset TIME,
-            data_calculation TIME
+            data_calculation TIME,
+            weather_json JSONB
         );
     """)
     conn.commit()
     cur.close()
     conn.close()
 
-def save_weather_query(city_name, weather_main, weather_description,temperature, temperature_feels_like,wind_speed, wind_direction, sunrise,sunset,data_calculation):
+def save_weather_query(city_name, weather_main, weather_description,temperature, temperature_feels_like,wind_speed, wind_direction, sunrise,sunset,data_calculation,weather_json):
     conn = get_DB_connection()
     cur = conn.cursor()
     cur.execute(
         sql.SQL("INSERT INTO weather_queries "
-                "(city_name, weather_main, weather_description,temperature, temperature_feels_like, wind_speed, wind_direction, sunrise,sunset,data_calculation) "
-                "VALUES (%s, %s, %s,%s, %s, %s,%s, %s, %s,%s)"),
-        (city_name, weather_main, weather_description,temperature, temperature_feels_like, wind_speed, wind_direction, sunrise,sunset,data_calculation)
+                "(city_name, weather_main, weather_description,temperature, temperature_feels_like, wind_speed, wind_direction, sunrise,sunset,data_calculation,weather_json) "
+                "VALUES (%s, %s, %s,%s, %s, %s,%s, %s, %s,%s,%s)"),
+        (city_name, weather_main, weather_description,temperature, temperature_feels_like, wind_speed, wind_direction, sunrise,sunset,data_calculation,weather_json)
     )
     conn.commit()
     cur.close()
