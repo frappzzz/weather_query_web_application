@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>Weather Query</title>
     <link rel="stylesheet" href="files/css/style.css">
+    {% if isWeather==True %}
+    <link rel="shortcut icon" href="https://openweathermap.org/img/wn/{{icon}}@2x.png" />
+    {% endif %}
 </head>
 <body>
 <h1>Weather Query</h1>
