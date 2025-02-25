@@ -30,7 +30,7 @@ Install the required Python packages:
 pip install -r requirements.txt
 ```
 ### 4. Set Up the Database
-1. Create a PostgreSQL Database. Log in to PostgreSQL and create a new database:
+Create a PostgreSQL Database. Log in to PostgreSQL and create a new database:
 ```commandline
 psql -U postgres
 CREATE DATABASE weather_db;
