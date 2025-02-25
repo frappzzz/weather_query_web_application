@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Weather Query</title>
+
     <link rel="stylesheet" href="files/css/style.css">
     {% if isWeather==True %}
+    <title>Weather in {{weather[0]}}</title>
     <link rel="shortcut icon" href="https://openweathermap.org/img/wn/{{icon}}@2x.png" />
+    {% else %}
+    <title>Weather Query</title>
     {% endif %}
 </head>
 <body>
