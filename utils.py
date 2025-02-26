@@ -12,3 +12,5 @@ def wind_direction(degrees):
     sector_size = 360 / len(directions)
     sector_index = int((degrees + sector_size / 2) % 360 // sector_size)
     return directions[sector_index]
+def hpa_to_mmhg(hpa):
+    return int(hpa * 0.750062)

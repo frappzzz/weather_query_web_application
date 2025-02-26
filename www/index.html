@@ -21,16 +21,18 @@
 {% if isWeather==True %}
  <div class="weather-info">
         <img src="https://openweathermap.org/img/wn/{{icon}}@2x.png">
-        <p>Local time of data calculation: {{weather[9]}}</p>
+        <p>Local time of data calculation: {{weather[11]}}</p>
         <p>City: {{weather[0]}}</p>
         <p>Main weather: {{weather[1]}}</p>
         <p>Weather Description: {{weather[2]}}</p>
         <p>Temperature (°C): {{weather[3]}}</p>
         <p>The temperature feels like (°C): {{weather[4]}}</p>
-        <p>Wind speed (m/s): {{weather[5]}}</p>
-        <p>Wind direction: {{weather[6]}}</p>
-        <p>Sunrise (local time): {{weather[7]}}</p>
-        <p>Sunset (local time): {{weather[8]}}</p>
+        <p>Humidity (%): {{weather[5]}}</p>
+        <p>Pressure (mmHg): {{weather[6]}}</p>
+        <p>Wind speed (m/s): {{weather[7]}}</p>
+        <p>Wind direction: {{weather[8]}}</p>
+        <p>Sunrise (local time): {{weather[9]}}</p>
+        <p>Sunset (local time): {{weather[10]}}</p>
     </div>
 {% endif %}
 </body>

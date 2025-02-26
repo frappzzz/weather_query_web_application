@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import requests
 from DataBase import save_weather_query,get_weather_history,create_table
-from utils import timestamp_to_hms_format, wind_direction
+from utils import timestamp_to_hms_format, wind_direction, hpa_to_mmhg
 import os
 import json
 from dotenv import load_dotenv
@@ -16,9 +16,11 @@ def index():
         if weather_data:
             save_weather_query(weather_data["name"],
                                weather_data["weather"][0]['main'],
-                               weather_data["weather"][0]['description'],
-                               weather_data["main"]['temp'],
-                               weather_data["main"]['feels_like'],
+                               weather_data["weather"][0]["description"],
+                               weather_data["main"]["temp"],
+                               weather_data["main"]["feels_like"],
+                               weather_data["main"]["humidity"],
+                               hpa_to_mmhg(weather_data["main"]["pressure"]),
                                weather_data["wind"]["speed"],
                                wind_direction(weather_data["wind"]["deg"]),
                                timestamp_to_hms_format(weather_data["sys"]["sunrise"], weather_data["timezone"]),
@@ -27,10 +29,12 @@ def index():
                                json.dumps(weather_data))
             return render_template('index.html',
                                    weather=[weather_data["name"],
-                                            weather_data["weather"][0]['main'],
-                                            weather_data["weather"][0]['description'],
-                                            weather_data["main"]['temp'],
-                                            weather_data["main"]['feels_like'],
+                                            weather_data["weather"][0]["main"],
+                                            weather_data["weather"][0]["description"],
+                                            weather_data["main"]["temp"],
+                                            weather_data["main"]["feels_like"],
+                                            weather_data["main"]["humidity"],
+                                            hpa_to_mmhg(weather_data["main"]["pressure"]),
                                             weather_data["wind"]["speed"],
                                             wind_direction(weather_data["wind"]["deg"]),
                                             timestamp_to_hms_format(weather_data["sys"]["sunrise"], weather_data["timezone"]),
