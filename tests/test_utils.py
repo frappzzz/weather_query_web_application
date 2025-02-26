@@ -1,4 +1,4 @@
-from utils import timestamp_to_hms_format, wind_direction
+from utils import timestamp_to_hms_format, wind_direction, hpa_to_mmhg
 import unittest
 
 
@@ -17,6 +17,10 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(wind_direction(225),"Southwest")
         self.assertEqual(wind_direction(270),"West")
         self.assertEqual(wind_direction(315),"Northwest")
+
+    def test_hpa_to_mmhg(self):
+        pressure=1021
+        self.assertEqual(hpa_to_mmhg(pressure),  765)
 
 if __name__ == '__main__':
     unittest.main()
